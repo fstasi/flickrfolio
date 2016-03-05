@@ -1,0 +1,142 @@
+
+body {
+	padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+.portfolio-item {
+	margin-bottom: 25px;
+}
+
+footer {
+	margin: 50px 0;
+}
+
+.gallery .thumb {
+	padding: 0;
+	padding-bottom: 66%;
+	padding-top: 1%;
+	overflow: hidden;
+	display: block;
+}
+
+
+.gallery .thumb .glyphicon {
+	position: absolute;
+	padding: 3px;
+}
+
+.img-fluid {
+	width: 100%;
+	height: auto;
+	position: absolute;
+}
+
+.caption {
+    width: 100%;
+    position: absolute;
+    height: 30%;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #E5E5E5;
+    display: none;
+}
+
+.caption p {
+	display: none;
+}
+
+.caption h3 {
+	font-size: 1.3em;
+    text-align: center;
+    font-weight: normal;
+}
+
+.noscroll {
+	overflow: hidden;
+}
+
+#overbox {
+	position: fixed;
+	transform: translate3d(0,-100%,0);
+	background-color: RGBA(0, 0, 0, 0.9);
+	transition: transform 0.6s;
+	z-index: 1;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	overflow: hidden;
+	padding-top: 50px;
+	color: #ccc;
+	display: none;
+}
+
+#overbox.shown{
+	transform: translate3d(0,0,0);
+}
+
+
+#overbox .controls {
+	height: 50px;
+	line-height: 50px;
+	font-size: 2em;
+	text-align: center;
+}
+
+#overbox .controls span {
+	margin-left: 1%;
+}
+
+#overbox .photoFull {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+#overbox .photoFull img{
+	width: 70%;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+#overbox .photoFull .description{
+	padding: 3%;
+	padding-top: 0;
+	position: absolute;
+	width: 30%;
+	text-align: justify;
+	font-size: 1.2em;
+	line-height: 1.6em;
+}
+
+#overbox .photoFull .description h3{
+	margin: 0;
+	margin-bottom: 20px;
+}
+
+@media (max-width: 991px) {
+
+	body {
+		overflow: auto !important;
+	}
+
+}
+@media (min-width: 992px) {
+
+	.gallery .thumb{
+		padding-bottom: 22%;
+		padding-left: 1%;
+		padding-right: 1%;
+		
+	}
+
+	#overbox, .caption {
+		display: block;
+	}
+}
+
+@media (min-width:1200px) {
+	.gallery .thumb {
+		padding-bottom: 16.5%;
+	}
+}
