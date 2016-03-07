@@ -13,12 +13,14 @@ footer {
 
 .gallery .thumb {
 	padding: 0;
-	padding-bottom: 66%;
-	padding-top: 1%;
 	overflow: hidden;
 	display: block;
 }
 
+.gallery .thumb a {
+	margin: 5px;
+	display: block;
+}
 
 .gallery .thumb .glyphicon {
 	position: absolute;
@@ -28,7 +30,6 @@ footer {
 .img-fluid {
 	width: 100%;
 	height: auto;
-	position: absolute;
 }
 
 .caption {
@@ -61,13 +62,14 @@ footer {
 	background-color: RGBA(0, 0, 0, 0.9);
 	transition: transform 0.6s;
 	z-index: 1;
-	top: 0;
+	top: 50px;
 	bottom: 0;
 	width: 100%;
 	overflow: hidden;
-	padding-top: 50px;
+	padding: 0;
 	color: #ccc;
 	display: none;
+	overflow: auto;
 }
 
 #overbox.shown{
@@ -78,18 +80,21 @@ footer {
 #overbox .controls {
 	height: 50px;
 	line-height: 50px;
-	font-size: 2em;
+	font-size: 1.7em;
 	text-align: center;
 }
 
-#overbox .controls span {
+#overbox .controls a {
 	margin-left: 1%;
+	color: #E5E5E5;
+	text-decoration: none;
 }
 
 #overbox .photoFull {
 	position: absolute;
 	width: 100%;
-	height: 100%;
+	top: 50px;
+	bottom: 0;
 }
 
 #overbox .photoFull img{
@@ -125,10 +130,11 @@ footer {
 @media (min-width: 992px) {
 
 	.gallery .thumb{
-		padding-bottom: 22%;
-		padding-left: 1%;
-		padding-right: 1%;
-		
+		padding-bottom: 22%;	
+	}
+
+	.img-fluid {
+		position: absolute;
 	}
 
 	#overbox, .caption {

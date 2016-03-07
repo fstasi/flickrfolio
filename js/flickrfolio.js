@@ -97,7 +97,7 @@ FlickrFolio.prototype.thumbBindings = function(){
 	'use strict';
 	var that = this;
 
-	$(".thumb").mouseenter(function() {
+	$(".thumb a").mouseenter(function() {
 		$(this).find(".caption").removeClass("hidden");
 	}).mouseleave(function() {
 		$(this).find(".caption").addClass("hidden");
@@ -139,13 +139,27 @@ FlickrFolio.prototype.generateOverboxBindings = function(){
 			default: return; // exit this handler for other keys
 		}
 		e.preventDefault(); // prevent the default action (scroll / move caret)
+		e.stopPropagation();
 	});
-
 
 	// create binds for the icons in the top bar of the overbox panel
 	$("#overbox").on("click",".closeoverbox",function(){that.closeOverbox(); return false;})
 				.on("click",".prev",function(){that.prevOverbox(); return false;})
 				.on("click",".next",function(){that.nextOverbox(); return false;});
+	
+
+	//while the overbox is shown, suppress any kind of scroll
+	$(window).on('wheel mousewheel keydown',function(e){
+
+		if( $("#overbox").is(":visible") && $("#overbox").hasClass("shown") ){
+
+			e.preventDefault();
+			e.stopPropagation();
+
+			return false;
+		}
+
+	});
 
 
 };
@@ -210,7 +224,7 @@ FlickrFolio.prototype.generatePhotoThumb = function(photoObj) {
 			'<div class="caption hidden"><span class="glyphicon glyphicon-fullscreen hidden-xs hidden-sm" aria-hidden="true"></span>'+
 			'<h3>'+photoObj.title+'</h3><p>'+photoObj.description._content+'</p></div>';
 
-	return '<a class="'+col_layout+'" href="'+photoObj.id+'">'+str+'</a>';
+	return '<div class="'+col_layout+'"><a href="'+photoObj.id+'">'+str+'</a></div>';
 }
 
 /* generate the photo full image, creating html for the given pic */
@@ -234,9 +248,8 @@ FlickrFolio.prototype.openOverBox = function(id) {
 	if($("#overbox").css("display") === 'none'){
 		return;
 	}
-	
-	$("body").addClass("noscroll");
 
+	//we don't want the background page to scroll, while the overbox is open
 	$("#overbox .photoFull").addClass("hidden");
 
 	$("#"+id).removeClass("hidden");
@@ -250,7 +263,6 @@ FlickrFolio.prototype.closeOverbox = function() {
 	'use strict';
 	var that = this;
 
-	$("body").removeClass("noscroll");
 	$("#overbox").removeClass("shown");
 
 	return;
@@ -299,6 +311,7 @@ $(document).ready(function(){
 	
 	flickrFolio = new FlickrFolio();
 
+	//set the name of the portfolio
 	$(".portfolioname").html(flickrFolio.pageTitle);
 
 	flickrFolio.init();
