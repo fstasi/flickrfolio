@@ -6,6 +6,8 @@ Built with Twitter Bootstrap, and jQuery, this project allows you to create your
 Essentially, flickrfolio parses the pictures you uploaded to flickr, looking for those you tagged as "portfolio".
 Those that match this criteria are accessed using flickr APIs, and put in the website.
 
+Long story short: see it in action --> http://francescostasi.com/photo/
+
 One of the key features of this project is that Flickr becomes the backoffice/management tool of your portfolio!
 Need to update a the descripion of a picture? You can do that on flickr!
 Want to upload and new picture and show it in your professional-looking portfolio? You can do that by uploading the picture on flickr and tagging it as "portfolio"!
